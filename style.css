@@ -1,0 +1,1298 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+:root {
+
+    --background: #07090d;
+
+    --card: rgba(255,255,255,0.055);
+
+    --border: rgba(255,255,255,0.10);
+
+    --text: #ffffff;
+
+    --muted: #8f96a3;
+
+    --accent: #6c7cff;
+
+    --accent-light: #8995ff;
+
+    --danger: #ff5268;
+}
+
+
+html {
+    min-height: 100%;
+}
+
+
+body {
+
+    min-height: 100vh;
+    min-height: 100dvh;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background:
+
+        radial-gradient(
+            circle at 50% 15%,
+            rgba(108,124,255,0.14),
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 15% 80%,
+            rgba(120,60,255,0.08),
+            transparent 30%
+        ),
+
+        var(--background);
+
+    color: var(--text);
+
+    overflow-x: hidden;
+
+    overscroll-behavior: none;
+}
+
+
+button {
+
+    -webkit-user-select: none;
+    user-select: none;
+
+    -webkit-touch-callout: none;
+
+    -webkit-tap-highlight-color: transparent;
+
+    touch-action: manipulation;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    outline: none;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container {
+
+    width: 100%;
+
+    padding: 20px;
+
+    display: flex;
+
+    justify-content: center;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.counter-card {
+
+    position: relative;
+
+    width: min(430px, 100%);
+
+    padding: 32px 30px 25px;
+
+    border-radius: 28px;
+
+    background: var(--card);
+
+    border: 1px solid var(--border);
+
+    backdrop-filter: blur(25px);
+
+    -webkit-backdrop-filter: blur(25px);
+
+    box-shadow:
+
+        0 30px 80px rgba(0,0,0,0.55),
+
+        inset 0 1px 0 rgba(255,255,255,0.06);
+
+    overflow: hidden;
+}
+
+
+.glow {
+
+    position: absolute;
+
+    width: 200px;
+    height: 200px;
+
+    top: -120px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background: var(--accent);
+
+    opacity: 0.16;
+
+    filter: blur(75px);
+
+    pointer-events: none;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+
+    position: relative;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 24px;
+}
+
+
+.app-label {
+
+    color: #d8dbff;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+}
+
+
+.status {
+
+    padding: 5px 9px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.05);
+
+    border: 1px solid rgba(255,255,255,0.07);
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 1.5px;
+}
+
+
+/* =========================
+   CONFIGURAÇÃO
+========================= */
+
+.setup {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    margin-bottom: 20px;
+}
+
+
+.setting {
+
+    padding: 14px;
+
+    border-radius: 17px;
+
+    background: rgba(255,255,255,0.035);
+
+    border: 1px solid rgba(255,255,255,0.07);
+
+    text-align: center;
+}
+
+
+.setting-label {
+
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+
+.setting-controls {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 8px;
+}
+
+
+.setting-controls span {
+
+    min-width: 35px;
+
+    font-size: 20px;
+
+    font-weight: 600;
+
+    color: white;
+}
+
+
+.small-button {
+
+    width: 34px;
+    height: 34px;
+
+    border-radius: 9px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    background: rgba(255,255,255,0.05);
+
+    color: white;
+
+    font-size: 18px;
+
+    transition:
+        transform 0.1s ease,
+        background 0.15s ease;
+}
+
+
+.small-button:active {
+
+    transform: scale(0.90);
+
+    background: rgba(255,255,255,0.12);
+}
+
+
+/* =========================
+   SÉRIE
+========================= */
+
+.series-info {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 10px;
+
+    padding: 0 5px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+
+.series-info strong {
+
+    color: #dfe2ff;
+
+    font-size: 13px;
+
+    letter-spacing: 0;
+}
+
+
+/* =========================
+   NÚMERO
+========================= */
+
+.number-panel {
+
+    position: relative;
+
+    width: 100%;
+
+    height: 180px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 22px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.075),
+            rgba(255,255,255,0.025)
+        );
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    box-shadow:
+
+        inset 0 1px 0 rgba(255,255,255,0.05),
+
+        inset 0 -20px 40px rgba(0,0,0,0.12);
+
+    backdrop-filter: blur(15px);
+
+    -webkit-backdrop-filter: blur(15px);
+}
+
+
+#counter {
+
+    font-size: clamp(75px,20vw,110px);
+
+    font-weight: 700;
+
+    letter-spacing: -6px;
+
+    line-height: 1;
+
+    color: white;
+
+    text-shadow:
+        0 0 30px rgba(255,255,255,0.08);
+
+    transition:
+        transform 0.10s ease;
+}
+
+
+.number-panel small {
+
+    position: absolute;
+
+    bottom: 20px;
+    right: 23px;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   PROGRESSO
+========================= */
+
+.progress-container {
+
+    width: 100%;
+
+    height: 7px;
+
+    margin-top: 16px;
+
+    border-radius: 20px;
+
+    background: rgba(255,255,255,0.06);
+
+    overflow: hidden;
+}
+
+
+.progress-bar {
+
+    width: 0%;
+
+    height: 100%;
+
+    border-radius: inherit;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            var(--accent),
+            var(--accent-light)
+        );
+
+    box-shadow:
+        0 0 15px rgba(108,124,255,0.35);
+
+    transition:
+        width 0.12s ease;
+}
+
+
+.progress-text {
+
+    margin-top: 7px;
+
+    text-align: right;
+
+    color: var(--muted);
+
+    font-size: 10px;
+}
+
+
+/* =========================
+   BOTÕES
+========================= */
+
+.buttons {
+
+    display: flex;
+
+    gap: 14px;
+
+    margin-top: 18px;
+}
+
+
+.control-button {
+
+    flex: 1;
+
+    min-height: 74px;
+
+    border-radius: 17px;
+
+    font-size: 34px;
+
+    color: white;
+
+    transition:
+        transform 0.08s ease,
+        background 0.12s ease;
+}
+
+
+.control-button:active {
+
+    transform: scale(0.94);
+}
+
+
+.minus {
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(255,82,104,0.18),
+            rgba(255,82,104,0.07)
+        );
+
+    border: 1px solid rgba(255,82,104,0.20);
+}
+
+
+.plus {
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(108,124,255,0.30),
+            rgba(108,124,255,0.10)
+        );
+
+    border: 1px solid rgba(108,124,255,0.25);
+
+    box-shadow:
+        0 8px 25px rgba(108,124,255,0.12);
+}
+
+
+/* =========================
+   CRONÔMETRO
+========================= */
+
+.timer-section {
+
+    margin-top: 23px;
+
+    text-align: center;
+}
+
+
+.timer-label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+}
+
+
+.timer {
+
+    font-family:
+        "SF Mono",
+        "Roboto Mono",
+        "Courier New",
+        monospace;
+
+    font-size: 28px;
+
+    font-weight: 500;
+
+    color: #e9ebff;
+
+    letter-spacing: 1px;
+
+    font-variant-numeric: tabular-nums;
+
+    text-shadow:
+        0 0 20px rgba(108,124,255,0.18);
+}
+
+
+/* =========================
+   BOTÃO COMEÇAR
+========================= */
+
+.start-button {
+
+    width: 100%;
+
+    height: 50px;
+
+    margin-top: 23px;
+
+    border-radius: 14px;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(108,124,255,0.30),
+            rgba(108,124,255,0.12)
+        );
+
+    border: 1px solid rgba(108,124,255,0.25);
+
+    color: white;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    transition:
+        transform 0.1s ease;
+}
+
+
+.start-button:active {
+
+    transform: scale(0.97);
+}
+
+
+/* =========================
+   HISTÓRICO BUTTON
+========================= */
+
+.history-button {
+
+    width: 100%;
+
+    height: 45px;
+
+    margin-top: 10px;
+
+    border-radius: 13px;
+
+    border: 1px solid rgba(108,124,255,0.12);
+
+    background: rgba(108,124,255,0.055);
+
+    color: #aab1ff;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    transition:
+        transform 0.1s ease,
+        background 0.15s ease;
+}
+
+
+.history-button:active {
+
+    transform: scale(0.97);
+
+    background: rgba(108,124,255,0.12);
+}
+
+
+/* =========================
+   RESET
+========================= */
+
+.reset-button {
+
+    width: 100%;
+
+    height: 45px;
+
+    margin-top: 10px;
+
+    border-radius: 13px;
+
+    border: 1px solid rgba(255,255,255,0.07);
+
+    background: rgba(255,255,255,0.025);
+
+    color: #858b98;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    transition:
+        transform 0.1s ease;
+}
+
+
+.reset-button:active {
+
+    transform: scale(0.97);
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+.finished {
+
+    text-align: center;
+
+    padding: 15px 0 5px;
+
+    animation: appear 0.35s ease;
+}
+
+
+.finished-icon {
+
+    width: 62px;
+    height: 62px;
+
+    margin: 0 auto 15px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(108,124,255,0.12);
+
+    border: 1px solid rgba(108,124,255,0.25);
+
+    color: var(--accent-light);
+
+    font-size: 30px;
+}
+
+
+.finished-label {
+
+    display: block;
+
+    color: #dfe2ff;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+
+.final-time {
+
+    margin-top: 13px;
+
+    font-family:
+        "SF Mono",
+        "Roboto Mono",
+        monospace;
+
+    font-size: 34px;
+
+    color: white;
+}
+
+
+.finished-subtitle {
+
+    color: var(--muted);
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+}
+
+
+/* =========================
+   RESULTADOS
+========================= */
+
+.series-results {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+
+    margin-top: 20px;
+}
+
+
+.series-result {
+
+    padding: 10px;
+
+    border-radius: 12px;
+
+    background: rgba(255,255,255,0.035);
+
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+
+.series-result span {
+
+    display: block;
+
+    color: var(--muted);
+
+    font-size: 8px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 4px;
+}
+
+
+.series-result strong {
+
+    font-family: monospace;
+
+    font-size: 12px;
+
+    color: #e7e9ff;
+}
+
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 1000;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: center;
+}
+
+
+.modal-background {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(0,0,0,0.68);
+
+    backdrop-filter: blur(10px);
+
+    -webkit-backdrop-filter: blur(10px);
+}
+
+
+.history-panel {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: min(500px, 100%);
+
+    max-height: 88vh;
+
+    max-height: 88dvh;
+
+    padding: 24px 20px 20px;
+
+    border-radius: 28px 28px 0 0;
+
+    background:
+
+        linear-gradient(
+            145deg,
+            rgba(22,25,34,0.98),
+            rgba(9,11,16,0.98)
+        );
+
+    border: 1px solid rgba(255,255,255,0.09);
+
+    box-shadow:
+        0 -20px 80px rgba(0,0,0,0.55);
+
+    overflow-y: auto;
+
+    animation: slideUp 0.25s ease;
+}
+
+
+/* =========================
+   HISTORY HEADER
+========================= */
+
+.history-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 20px;
+}
+
+
+.history-title {
+
+    display: block;
+
+    color: white;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+
+.history-count {
+
+    display: block;
+
+    margin-top: 4px;
+
+    color: var(--muted);
+
+    font-size: 9px;
+}
+
+
+.close-button {
+
+    width: 38px;
+    height: 38px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    background: rgba(255,255,255,0.05);
+
+    color: #b5bac5;
+
+    font-size: 24px;
+
+    line-height: 1;
+}
+
+
+/* =========================
+   LISTA
+========================= */
+
+.history-list {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.history-item {
+
+    position: relative;
+
+    padding: 15px;
+
+    border-radius: 16px;
+
+    background: rgba(255,255,255,0.04);
+
+    border: 1px solid rgba(255,255,255,0.07);
+
+    animation: appear 0.25s ease;
+}
+
+
+.history-item-top {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+}
+
+
+.history-date {
+
+    color: #dce0ff;
+
+    font-size: 11px;
+
+    font-weight: 700;
+}
+
+
+.history-time {
+
+    color: #7f88ff;
+
+    font-size: 10px;
+
+    font-family: monospace;
+}
+
+
+.history-main {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+}
+
+
+.history-exercise {
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+}
+
+
+.history-total {
+
+    color: white;
+
+    font-family: monospace;
+
+    font-size: 18px;
+
+    font-weight: 600;
+}
+
+
+.history-series {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 6px;
+
+    margin-top: 12px;
+}
+
+
+.history-series-chip {
+
+    padding: 6px 8px;
+
+    border-radius: 8px;
+
+    background: rgba(108,124,255,0.08);
+
+    border: 1px solid rgba(108,124,255,0.10);
+
+    color: #9da5ff;
+
+    font-family: monospace;
+
+    font-size: 8px;
+}
+
+
+.delete-session {
+
+    position: absolute;
+
+    right: 12px;
+
+    top: 45px;
+
+    width: 28px;
+    height: 28px;
+
+    border-radius: 8px;
+
+    border: 1px solid rgba(255,82,104,0.10);
+
+    background: rgba(255,82,104,0.05);
+
+    color: #b8707b;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   VAZIO
+========================= */
+
+.empty-history {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 50px 20px;
+
+    text-align: center;
+}
+
+
+.empty-icon {
+
+    font-size: 42px;
+
+    color: #6d7482;
+
+    margin-bottom: 14px;
+}
+
+
+.empty-history strong {
+
+    color: #dce0e8;
+
+    font-size: 13px;
+}
+
+
+.empty-history span {
+
+    max-width: 250px;
+
+    margin-top: 7px;
+
+    color: var(--muted);
+
+    font-size: 10px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================
+   APAGAR
+========================= */
+
+.clear-history {
+
+    width: 100%;
+
+    height: 44px;
+
+    margin-top: 18px;
+
+    border-radius: 12px;
+
+    border: 1px solid rgba(255,82,104,0.13);
+
+    background: rgba(255,82,104,0.055);
+
+    color: #d27c87;
+
+    font-size: 9px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+}
+
+
+.clear-history:active {
+
+    transform: scale(0.98);
+}
+
+
+/* =========================
+   HIDDEN
+========================= */
+
+.hidden {
+
+    display: none !important;
+}
+
+
+/* =========================
+   ANIMAÇÕES
+========================= */
+
+@keyframes appear {
+
+    from {
+
+        opacity: 0;
+
+        transform: translateY(8px);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform: translateY(0);
+
+    }
+}
+
+
+@keyframes slideUp {
+
+    from {
+
+        transform: translateY(100%);
+
+    }
+
+    to {
+
+        transform: translateY(0);
+
+    }
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 480px) {
+
+    .container {
+
+        padding: 14px;
+    }
+
+    .counter-card {
+
+        padding: 27px 21px 22px;
+
+        border-radius: 24px;
+    }
+
+    .number-panel {
+
+        height: 165px;
+    }
+
+    .control-button {
+
+        min-height: 74px;
+    }
+
+    .timer {
+
+        font-size: 26px;
+    }
+}

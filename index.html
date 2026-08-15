@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <meta
+        name="theme-color"
+        content="#07090d"
+    >
+
+    <meta
+        name="apple-mobile-web-app-capable"
+        content="yes"
+    >
+
+    <meta
+        name="apple-mobile-web-app-status-bar-style"
+        content="black-translucent"
+    >
+
+    <meta
+        name="apple-mobile-web-app-title"
+        content="Physio"
+    >
+
+    <link
+        rel="manifest"
+        href="manifest.json"
+    >
+
+    <link
+        rel="apple-touch-icon"
+        href="icons/icon-192.png"
+    >
+
+    <title>Physio Counter</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
+</head>
+
+
+<body>
+
+<main class="container">
+
+    <section class="counter-card">
+
+        <div class="glow"></div>
+
+
+        <!-- HEADER -->
+
+        <div class="header">
+
+            <span class="app-label">
+                PHYSIO COUNTER
+            </span>
+
+            <span
+                id="status"
+                class="status"
+            >
+                PRONTO
+            </span>
+
+        </div>
+
+
+        <!-- CONFIGURAÇÃO -->
+
+        <div
+            id="setup"
+            class="setup"
+        >
+
+            <div class="setting">
+
+                <span class="setting-label">
+                    SÉRIES
+                </span>
+
+                <div class="setting-controls">
+
+                    <button
+                        id="seriesMinus"
+                        class="small-button"
+                        type="button"
+                    >
+                        −
+                    </button>
+
+                    <span id="seriesValue">
+                        4
+                    </span>
+
+                    <button
+                        id="seriesPlus"
+                        class="small-button"
+                        type="button"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="setting">
+
+                <span class="setting-label">
+                    REPETIÇÕES
+                </span>
+
+                <div class="setting-controls">
+
+                    <button
+                        id="repsMinus"
+                        class="small-button"
+                        type="button"
+                    >
+                        −
+                    </button>
+
+                    <span id="repsValue">
+                        30
+                    </span>
+
+                    <button
+                        id="repsPlus"
+                        class="small-button"
+                        type="button"
+                    >
+                        +
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- EXERCÍCIO -->
+
+        <div id="exerciseArea">
+
+            <div class="series-info">
+
+                <span>
+                    SÉRIE
+                </span>
+
+                <strong>
+
+                    <span id="currentSeries">
+                        1
+                    </span>
+
+                    /
+
+                    <span id="totalSeries">
+                        4
+                    </span>
+
+                </strong>
+
+            </div>
+
+
+            <div class="number-panel">
+
+                <span id="counter">
+                    0
+                </span>
+
+                <small>
+                    / <span id="totalReps">30</span> reps
+                </small>
+
+            </div>
+
+
+            <div class="progress-container">
+
+                <div
+                    id="progressBar"
+                    class="progress-bar"
+                ></div>
+
+            </div>
+
+
+            <div class="progress-text">
+
+                <span id="progressText">
+                    0 / 30
+                </span>
+
+            </div>
+
+
+            <div class="buttons">
+
+                <button
+                    id="minus"
+                    class="control-button minus"
+                    type="button"
+                >
+                    −
+                </button>
+
+                <button
+                    id="plus"
+                    class="control-button plus"
+                    type="button"
+                >
+                    +
+                </button>
+
+            </div>
+
+
+            <div class="timer-section">
+
+                <span class="timer-label">
+                    TEMPO
+                </span>
+
+                <div
+                    id="timer"
+                    class="timer"
+                >
+                    00:00.000
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FINAL -->
+
+        <div
+            id="finished"
+            class="finished hidden"
+        >
+
+            <div class="finished-icon">
+                ✓
+            </div>
+
+            <span class="finished-label">
+                EXERCÍCIO CONCLUÍDO
+            </span>
+
+            <div
+                id="finalTime"
+                class="final-time"
+            >
+                00:00.000
+            </div>
+
+            <span class="finished-subtitle">
+                TEMPO TOTAL
+            </span>
+
+
+            <div
+                id="seriesResults"
+                class="series-results"
+            ></div>
+
+        </div>
+
+
+        <!-- COMEÇAR -->
+
+        <button
+            id="startButton"
+            class="start-button"
+            type="button"
+        >
+            COMEÇAR
+        </button>
+
+
+        <!-- HISTÓRICO -->
+
+        <button
+            id="historyButton"
+            class="history-button"
+            type="button"
+        >
+            HISTÓRICO
+        </button>
+
+
+        <!-- RESET -->
+
+        <button
+            id="reset"
+            class="reset-button"
+            type="button"
+        >
+            RESET
+        </button>
+
+    </section>
+
+</main>
+
+
+<!-- ==========================
+     MODAL DO HISTÓRICO
+========================== -->
+
+<div
+    id="historyModal"
+    class="modal hidden"
+>
+
+    <div class="modal-background"></div>
+
+
+    <div class="history-panel">
+
+        <div class="history-header">
+
+            <div>
+
+                <span class="history-title">
+                    HISTÓRICO
+                </span>
+
+                <span
+                    id="historyCount"
+                    class="history-count"
+                >
+                    0 sessões
+                </span>
+
+            </div>
+
+            <button
+                id="closeHistory"
+                class="close-button"
+                type="button"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            id="historyList"
+            class="history-list"
+        ></div>
+
+
+        <div
+            id="emptyHistory"
+            class="empty-history"
+        >
+
+            <div class="empty-icon">
+                ◷
+            </div>
+
+            <strong>
+                Nenhuma sessão ainda
+            </strong>
+
+            <span>
+                Complete um exercício para ele aparecer aqui.
+            </span>
+
+        </div>
+
+
+        <button
+            id="clearHistory"
+            class="clear-history"
+            type="button"
+        >
+            APAGAR HISTÓRICO
+        </button>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
